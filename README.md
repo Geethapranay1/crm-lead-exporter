@@ -82,10 +82,10 @@ check [`.env.example`](./.env.example) for the full list. the important ones:
 
 | variable | where | what it does |
 |---|---|---|
-| `GROQ_API_KEY` | backend |alternative AI provider API key (required) |
+| `GROQ_API_KEY` | backend |alternative AI provider API key |
 | `GROQ_MODEL` | backend | which model to use, defaults to `llama-3.3-70b-versatile` |
-| `OPENROUTER_API_KEY` | backend | main i am using openrouter.  |
-
+| `OPENROUTER_API_KEY` | backend | main i am using openrouter |
+| `OPENROUTER_MODEL` | backend | i used `nvidia/nemotron-3-ultra-550b-a55b:free` |
 | `GEMINI_API_KEY` | backend | alternative: use google gemini |
 | `BATCH_SIZE` | backend | how many rows to send to the ai per call (default `10`) |
 | `MAX_RETRIES` | backend | retry count for failed ai batches (default `2`, with backoff) |
@@ -227,10 +227,6 @@ docker compose up --build
 
 each service has its own multi-stage dockerfile that builds the shared package first, then the app, and ships a minimal `node:20-alpine` runtime image.
 
-## deployment
-
-- **frontend → vercel**: import the repo, set root directory to `frontend`, add `NEXT_PUBLIC_API_URL` and `BACKEND_URL` as env vars pointing at your deployed backend. there's a `vercel.json` in the frontend folder that handles the monorepo build.
-- **backend → railway or render**: point the service at `backend/Dockerfile`. set `GROQ_API_KEY` (or whichever provider key you're using), `CORS_ORIGIN` (your vercel url), and the other env vars from `.env.example`. there's a `railway.toml` included for railway.
 
 ## project structure
 
