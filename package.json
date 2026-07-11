@@ -1,0 +1,19 @@
+{
+  "name": "groweasy-csv-importer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI-powered CSV importer that maps arbitrary CSV layouts into GrowEasy CRM records.",
+  "license": "MIT",
+  "scripts": {
+    "build:shared": "pnpm --filter @groweasy/shared build",
+    "dev": "pnpm build:shared && concurrently -n backend,frontend -c blue,magenta \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
+    "build": "pnpm build:shared && pnpm --filter backend build && pnpm --filter frontend build",
+    "start": "concurrently -n backend,frontend -c blue,magenta \"pnpm --filter backend start\" \"pnpm --filter frontend start\"",
+    "test": "cd backend && pnpm exec jest --passWithNoTests && cd ../frontend && pnpm exec vitest run",
+    "lint": "cd backend && pnpm exec eslint \"src/**/*.ts\" && cd ../frontend && pnpm exec eslint \"src/**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "packageManager": "pnpm@10.4.1"
+}
