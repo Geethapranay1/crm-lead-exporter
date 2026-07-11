@@ -61,7 +61,6 @@ Here's how the pieces fit together:
 ```bash
 
 git clone https://github.com/Geethapranay1/crm-lead-exporter.git
-cd csv
 
 
 pnpm install
